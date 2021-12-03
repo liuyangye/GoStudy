@@ -3,6 +3,11 @@ package main
 import "fmt"
 
 func main() {
+	var sumBmi float64
+	var averageBmi float64
+	var pepoleCount int
+
+	//for pepoleCount := 0; pepoleCount < 3; pepoleCount++ {
 	for {
 		var name string
 		fmt.Println("请输入姓名:")
@@ -15,6 +20,8 @@ func main() {
 		var tall float64
 		fmt.Println("请输入身高(米):")
 		fmt.Scanln(&tall)
+
+		// 计算体脂率
 		var bmi float64 = weight / (tall * tall)
 
 		var age int
@@ -117,11 +124,22 @@ func main() {
 			}
 		}
 
-		var whetherContinune string
-		fmt.Print("是否录入下一个(y/n)?")
-		fmt.Scanln(&whetherContinune)
-		if whetherContinune == "n" {
+		sumBmi += bmi
+		pepoleCount += 1
+		fmt.Printf("current count:%d, bmi:%f, tempSumBmi:%f\n", pepoleCount, bmi, sumBmi)
+		if pepoleCount == 3 {
+			averageBmi = sumBmi / float64(pepoleCount)
+			fmt.Printf("Total popele number:%d, average bmi:%f\n", pepoleCount, averageBmi)
 			break
 		}
+
+		/*
+			var whetherContinune string
+			fmt.Print("是否录入下一个(y/n)?")
+			fmt.Scanln(&whetherContinune)
+			if whetherContinune == "n" {
+				break
+			}
+		*/
 	}
 }
